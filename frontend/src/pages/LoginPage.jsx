@@ -40,9 +40,9 @@ function LoginPage() {
       if(response.ok){
         // alert(`logged as in ${email}`);
         alert("Login successfully");
-        navigate("/");
+        navigate("/home");
       }else{
-        alert("invalid username or password ");
+        alert("invalid credentials");
         
       }
     }catch(error){

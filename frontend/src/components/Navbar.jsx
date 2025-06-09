@@ -8,6 +8,7 @@ function Navbar() {
         🔍 Crime Predictor
       </div>
       <div className="nav-links">
+        <Link to="/">Landing</Link>
         <Link to="/">Home</Link>
         <Link to="/login">Login</Link>
         <Link to="/about">About Us</Link>

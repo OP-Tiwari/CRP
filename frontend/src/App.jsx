@@ -13,10 +13,10 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/Home" element={<HomePage />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/about" element={<AboutPage />} />
-         <Route path="/" element={<LandingPage />} />
         <Route path="/Notifications" element={<NotificationPage />} />
         <Route path="/New Criminal Laws" element={<NewcriminalLawsPage />} /> 
       </Routes>
