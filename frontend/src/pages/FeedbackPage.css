@@ -1,0 +1,81 @@
+/* FeedbackPage.css */
+
+.feedback-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+}
+
+.feedback-box {
+  background: #ffffff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+.feedback-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.feedback-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.feedback-quote {
+  font-style: italic;
+  color: #1c1313;
+  font-size: 0.98rem;
+  min-height: 40px;
+}
+
+.feedback-box h2 {
+  margin-bottom: 20px;
+  color: #0b073c;
+}
+
+.feedback-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+.feedback-box label {
+  font-weight: 500;
+  color: #333;
+}
+
+.feedback-box input,
+.feedback-box textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+.feedback-box button {
+  background-color: #1b1464;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.feedback-box button:hover {
+  background-color: #432a9d;
+}

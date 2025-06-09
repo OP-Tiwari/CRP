@@ -7,16 +7,14 @@ function LoginPage() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
 
   const navigate = useNavigate();
 
   const handleToggle = () => {
     setIsRegistering(!isRegistering);
-     setUsername("");
+    setUsername("");
     setEmail("");
     setPassword("");
-   
   };
 
   const handleLogin = async (e) => {
@@ -25,63 +23,57 @@ function LoginPage() {
       alert("Please fill all fields.");
       return;
     }
-    const user = {email , password};
-    try{
-      const response = await fetch("http://localhost:5000/api/auth/login",{
-      method: "POST",
-      headers:{
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
+    const user = { email, password };
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
       });
-       console.log("login form",response);
-       
+      console.log("login form", response);
 
-      if(response.ok){
+      if (response.ok) {
         // alert(`logged as in ${email}`);
         alert("Login successfully");
         navigate("/home");
-      }else{
-        alert("invalid credentials");
-        
+      } else {
+        alert("invalid username or password ");
       }
-    }catch(error){
-    console.log("login error" , error);
-     alert("Something went wrong.");
+    } catch (error) {
+      console.log("login error", error);
+      alert("Something went wrong.");
     }
-    // alert(`Logged in as ${email}`);
-    // navigate("/Home");
   };
 
-  const handleRegister = async(e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     if (!username || !email || !password) {
       alert("Please fill all fields.");
       return;
     }
     const user = { username, email, password };
-    try{
-       const response = await fetch("http://localhost:5000/api/auth/register",{
-      method: "POST",
-      headers:{
-        "Content-Type": "application/json",
-      },
-      body:JSON.stringify(user),
-    } );
-    const data = await response.json();
-    console.log(data);
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+      const data = await response.json();
+      console.log(data);
 
-    if (response.ok) {
-      alert("Registered successfully!");
-      navigate("/login");
-    } else {
-      alert(`Registration failed: ${data.message}`);
-    }
-    }catch(error){
+      if (response.ok) {
+        alert("Registered successfully!");
+        navigate("/login");
+      } else {
+        alert(`Registration failed: ${data.message}`);
+      }
+    } catch (error) {
       console.log("register", error);
-      
-  }
-    
+    }
   };
 
   return (
