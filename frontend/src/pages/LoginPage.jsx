@@ -42,7 +42,7 @@ function LoginPage() {
         alert("Login successfully");
         navigate("/");
       }else{
-        alert("invalid credentials");
+        alert("invalid username or password ");
         
       }
     }catch(error){
