@@ -4,37 +4,84 @@ import "./LoginPage.css"; // Optional styling
 
 function LoginPage() {
   const [isRegistering, setIsRegistering] = useState(false);
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
+  
 
   const navigate = useNavigate();
 
   const handleToggle = () => {
     setIsRegistering(!isRegistering);
+     setUsername("");
     setEmail("");
     setPassword("");
-    setUsername("");
+   
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     if (!email || !password) {
       alert("Please fill all fields.");
       return;
     }
-    alert(`Logged in as ${email}`);
-    navigate("/Home");
+    const user = {email , password};
+    try{
+      const response = await fetch("http://localhost:5000/api/auth/login",{
+      method: "POST",
+      headers:{
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+      });
+       console.log("login form",response);
+       
+
+      if(response.ok){
+        // alert(`logged as in ${email}`);
+        alert("Login successfully");
+        navigate("/");
+      }else{
+        alert("invalid credentials");
+        
+      }
+    }catch(error){
+    console.log("login error" , error);
+     alert("Something went wrong.");
+    }
+    // alert(`Logged in as ${email}`);
+    // navigate("/Home");
   };
 
-  const handleRegister = (e) => {
+  const handleRegister = async(e) => {
     e.preventDefault();
     if (!username || !email || !password) {
       alert("Please fill all fields.");
       return;
     }
-    alert(`Registered as ${username}`);
-    navigate("/Home");
+    const user = { username, email, password };
+    try{
+       const response = await fetch("http://localhost:5000/api/auth/register",{
+      method: "POST",
+      headers:{
+        "Content-Type": "application/json",
+      },
+      body:JSON.stringify(user),
+    } );
+    const data = await response.json();
+    console.log(data);
+
+    if (response.ok) {
+      alert("Registered successfully!");
+      navigate("/login");
+    } else {
+      alert(`Registration failed: ${data.message}`);
+    }
+    }catch(error){
+      console.log("register", error);
+      
+  }
+    
   };
 
   return (
