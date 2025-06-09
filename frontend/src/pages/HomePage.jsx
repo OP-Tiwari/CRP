@@ -54,18 +54,27 @@ function HomePage() {
           <option>Mumbai</option>
           <option>Delhi</option>
           <option>Bangalore</option>
+          <option>Ranchi</option>
+          <option>Patna</option>
+          <option>Chennai</option>
+          <option>Kolkata</option>
+          <option>Raipur</option>
+          <option>Jaipur</option>
+          <option>Hyderabaad</option>
         </select>
         <select value={year} onChange={(e) => setYear(e.target.value)}>
           <option value="">Select Year</option>
-          <option>2023</option>
-          <option>2024</option>
-          <option>2025</option>
+          <option>2020</option>
+          <option>2021</option>
+          <option>2022</option>
         </select>
         <select value={crime} onChange={(e) => setCrime(e.target.value)}>
           <option value="">Select Crime Type</option>
-          <option>Theft</option>
-          <option>Assault</option>
+          <option>Murder</option>
+          <option>Against Women</option>
           <option>Cyber Crime</option>
+          <option>Against Child</option>
+          <option>Theft/Robbery</option>
         </select>
         <button onClick={handlePredict}>Predict</button>
 

@@ -15,13 +15,13 @@ const Footer = () => {
         <div className="footer-section contact">
           <h3>Contact Us</h3>
           <p>
-            <strong>Phone:</strong> +91 9876543210
+            <strong>Phone:</strong> +91 7764988901
           </p>
           <p>
-            <strong>Email:</strong> support@example.com
+            <strong>Email:</strong> om7764tiwari@gmail.com
           </p>
           <p>
-            <strong>Address:</strong> 123 Tech Street, Bangalore, India
+            <strong>Address:</strong> Pandra,Ranchi, Jharkhand, India
           </p>
         </div>
 

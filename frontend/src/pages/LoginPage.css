@@ -1,53 +1,104 @@
 .container {
+  width: 100%;
+  max-width: 380px; /* slightly smaller for balanced look */
+  padding: 40px 30px;
+  background: rgba(245, 245, 250, 0.95); /* light, nearly white background */
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  margin: 50px auto;
+  color: #222; /* dark text for contrast */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  transform: translateY(-3px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container .form-box {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(120deg, #2980b9, #6dd5fa);
-  font-family: Arial, sans-serif;
+  flex-direction: column;
+  gap: 18px;
 }
 
-.form-box {
-  background: white;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  width: 300px;
+.container h2 {
   text-align: center;
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+  color: #111;
 }
 
-.form-box h2 {
-  margin-bottom: 20px;
+.container input[type="text"],
+.container input[type="email"],
+.container input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1.8px solid #ccc;
+  font-size: 1.05rem;
+  outline: none;
+  background-color: #fff;
   color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.form-box input {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+.container input::placeholder {
+  color: #999;
 }
 
-.form-box button {
+.container input:focus {
+  border-color: #6655ff;
+  box-shadow: 0 0 8px 2px rgba(102, 85, 255, 0.4);
+}
+
+.container button {
   width: 100%;
-  padding: 10px;
-  background: #2980b9;
-  color: white;
+  padding: 14px 0;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.15rem;
+  background: #6655ff;
+  color: white;
   cursor: pointer;
-  margin-top: 10px;
-  font-weight: bold;
+  transition: background 0.35s ease;
+  box-shadow: 0 4px 15px rgba(102, 85, 255, 0.5);
 }
 
-.form-box button:hover {
-  background: #2573a6;
+.container button:hover {
+  background: #4b3dc7;
+  box-shadow: 0 6px 25px rgba(75, 61, 199, 0.7);
 }
 
-.toggle-link {
-  margin-top: 15px;
-  color: #2980b9;
+.container .toggle-link {
+  margin-top: 14px;
+  font-size: 1rem;
+  text-align: center;
   cursor: pointer;
+  color: #555;
+  user-select: none;
+  transition: color 0.25s ease;
+}
+
+.container .toggle-link:hover {
+  color: #6655ff;
   text-decoration: underline;
+}
+
+@media (max-width: 460px) {
+  .container {
+    max-width: 90%;
+    padding: 35px 20px;
+    margin: 30px auto;
+  }
+
+  .container h2 {
+    font-size: 1.8rem;
+  }
+
+  .container button {
+    font-size: 1.05rem;
+  }
 }

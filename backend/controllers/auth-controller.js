@@ -7,8 +7,8 @@ import bcrypt from "bcryptjs";
 } catch(error){
  next(error);
 
-};
 }
+};
    //Registration
   const register = async(req, res, next) =>{
     try{

@@ -1,0 +1,184 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f7f9fc;
+  color: #2b2b2b;
+}
+
+/* Container */
+.landing-page {
+  max-width: 1140px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Banner Section */
+.banner-section {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 40px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.banner-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  filter: brightness(0.55);
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+  padding: 0 20px;
+  max-width: 90%;
+}
+
+.banner-overlay h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+}
+
+.banner-overlay p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+}
+
+/* Instruction Section */
+.instruction-section {
+  margin-bottom: 40px;
+}
+
+.instruction-section h2 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  text-align: center;
+  color: #432a9d;
+  font-weight: 700;
+}
+
+.instruction-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  padding: 25px 30px;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(67, 42, 157, 0.15);
+  flex: 1 1 350px;
+  max-width: 480px;
+}
+
+.do-card h3 {
+  color: #2d8f2d; /* green */
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+.dont-card h3 {
+  color: #d93025; /* red */
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+.card ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+.card ul li {
+  margin-bottom: 10px;
+}
+
+/* Map Section */
+.map-section {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.map-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #432a9d;
+  font-weight: 700;
+}
+
+.map-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(67, 42, 157, 0.25);
+  border: 2px solid #432a9d;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.9rem;
+  color: #777;
+  border-top: 1px solid #ddd;
+  margin-top: 60px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .instruction-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    max-width: 90%;
+  }
+
+  .banner-overlay h1 {
+    font-size: 2rem;
+  }
+
+  .banner-overlay p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-section {
+    height: 220px;
+  }
+
+  .banner-overlay h1 {
+    font-size: 1.5rem;
+  }
+
+  .banner-overlay p {
+    font-size: 0.9rem;
+  }
+
+  .instruction-section h2,
+  .map-section h2 {
+    font-size: 1.5rem;
+  }
+}
