@@ -1,6 +1,6 @@
-import Contact from "../models/contact-model.js";
+import Contact from "../models/feedback-model.js";
 
-const contactForm = async(req,res) =>{
+const feedbackForm = async(req,res) =>{
     try{
       const response = req.body;
      await Contact.create(response);
@@ -11,4 +11,4 @@ const contactForm = async(req,res) =>{
     
 };
 
-export default contactForm;
+export default feedbackForm;

@@ -17,24 +17,75 @@ function FeedbackPage() {
     "Great feedback builds great products.",
     "Tell us what you think – we’re all ears!",
   ];
-
+   //autofill user info
   useEffect(() => {
-    const interval = setInterval(() => {
-      const randomIndex = Math.floor(Math.random() * quotes.length);
-      setQuote(quotes[randomIndex]);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
+  const fetchUserInfo = async () => {
+    try {
+      const token = localStorage.getItem("token");
+       console.log("Sending token:", token);
+       
+      if (!token) return;
+
+      const response = await fetch("http://localhost:5000/api/auth/user", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Fetched user info:", data);
+
+        setFormData((prev) => ({
+          ...prev,
+          username: data.username || "",
+          email: data.email || "",
+        }));
+      }
+    } catch (err) {
+      console.error("Failed to fetch user info:", err);
+    }
+  };
+
+  fetchUserInfo();
+
+  // Random quote
+    setQuote(quotes[Math.floor(Math.random() * quotes.length)]);
+}, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    alert("Feedback submitted!");
-    setFormData({ username: "", email: "", message: "" });
+
+    try{
+      
+       const response = await fetch("http://localhost:5000/api/form/feedback", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+         body: JSON.stringify(formData),
+       });
+       if (response.ok) {
+      alert("Feedback submitted successfully!");
+      setFormData((prev) => ({
+        ...prev,
+        message: "", // clear only the message
+      }));
+     } else {
+      const errData = await response.json();
+      alert("Failed to submit feedback: " + errData.message);
+    }
+    }catch(error){
+      console.error("Error submitting feedback:", error);
+    alert("An error occurred. Please try again.");
+    }
+    
   };
 
   return (

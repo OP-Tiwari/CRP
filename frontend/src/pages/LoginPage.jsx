@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.css"; // Optional styling
+import { toast } from "react-toastify";
 
 function LoginPage() {
   const [isRegistering, setIsRegistering] = useState(false);
@@ -33,13 +34,17 @@ function LoginPage() {
         body: JSON.stringify(user),
       });
       console.log("login form", response);
+      
+      const data = await response.json(); 
 
       if (response.ok) {
         // alert(`logged as in ${email}`);
+       localStorage.setItem("token", data.token); // login page 
+
         alert("Login successfully");
         navigate("/home");
       } else {
-        alert("invalid username or password ");
+        toast.error(data.extraDetails ? data.extraDetails : data.message);
       }
     } catch (error) {
       console.log("login error", error);
@@ -63,13 +68,13 @@ function LoginPage() {
         body: JSON.stringify(user),
       });
       const data = await response.json();
-      console.log(data);
+      console.log("res from data", data.extraDetails);
 
       if (response.ok) {
         alert("Registered successfully!");
         navigate("/login");
       } else {
-        alert(`Registration failed: ${data.message}`);
+        alert(data.extraDetails ? data.extraDetails : data.message);
       }
     } catch (error) {
       console.log("register", error);

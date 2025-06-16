@@ -42,6 +42,10 @@ userSchema.pre("save",async function(next) {
 
 //json web token
 userSchema.methods.generateToken = function() {
+    if (!process.env.JWT_SECRET_KEY) {
+    throw new Error("JWT_SECRET_KEY is not defined");  // throw an error
+  }
+
     try{
         return jwt.sign({
             userId: this._id.toString(),

@@ -3,7 +3,9 @@ import bcrypt from "bcryptjs";
 
  const home = async(req, res, next) =>{
     try{
-        res.send("This is route path");
+        res
+        .status(200)
+        .send("This is route path");
 } catch(error){
  next(error);
 
@@ -70,5 +72,17 @@ const login = async(req, res, next) =>{
     }
 };
 
+// send user data of feedback
+const user = async(req, res) =>{
+    try{
+       const userData = req.user;
+       console.log(userData);
+       return res.status(200).json(userData);
+    }catch(error){
+        console.log(`error from the user route ${error}`);
+        
+    }
+}
 
-export default { home, register, login };
+
+export default { home, register, login, user };

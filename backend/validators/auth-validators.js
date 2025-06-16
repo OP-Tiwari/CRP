@@ -1,8 +1,23 @@
 import {z} from "zod";
 
+//creating login schema
+ export  const loginSchema = z.object({
+  email: z
+    .string({required_error:"Email is required"})
+    .trim()
+    .email({message: "invalid email address"})
+    .min(3, {message: "Email must be atleast 3 characters"})
+    .max(255, {message:"Email must not be more than 255 characters"}),  
+
+    password: z
+    .string({required_error:"Password is required"})
+    .trim()
+    .min(7, {message: "Password must be atleast 7 characters"})
+    .max(1024, {message:"Password must not be more than 1024 characters"}),
+});
 
 //creating object schema
-const signupSchema = z.object({
+ export const signupSchema = z.object({
     username: z
     .string({required_error:"Name is required"})
     .trim()
@@ -21,6 +36,6 @@ const signupSchema = z.object({
     .trim()
     .min(7, {message: "Password must be atleast 7 characters"})
     .max(1024, {message:"Password must not be more than 1024 characters"}),
-})
+});
 
-export default signupSchema;
+// export default {signupSchema, loginSchema};
